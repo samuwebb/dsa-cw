@@ -9,7 +9,7 @@ public class Homeowner extends User {
         this.properties = properties;
     }
 
-    public List<Property> viewProperties() {
+    public List<Property> getProperties() {
         return properties;
     }
 }
