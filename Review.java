@@ -1,7 +1,7 @@
 public class Review {
-    Property property;
-    int rating;
-    String comment;
+    private Property property;
+    private int rating;
+    private String comment;
 
     public Review(Property property, int rating, String comment) {
         this.property = property;
