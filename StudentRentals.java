@@ -30,7 +30,7 @@ public class StudentRentals {
     }
 
     public static void displayRegistrationMenu(Registration registration, Scanner scanner) {
-        System.out.println("Registration page");
+        System.out.println("Registration Menu");
         System.out.println("Please select one of the following:");
         System.out.println("1. Register as a Student");
         System.out.println("2. Register as a Homeowner");
@@ -47,8 +47,32 @@ public class StudentRentals {
     }
 
     public static void startStudentRegistration(Registration registration, Scanner scanner) {
+        System.out.println("Student Registration Page");
+        System.out.println("Enter your name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter your email:");
+        String email = scanner.nextLine();
+        System.out.println("Enter your password:");
+        String password = scanner.nextLine();
+        System.out.println("Enter your student id:");
+        String studentId = scanner.nextLine();
+        System.out.println("Enter your university:");
+        String university = scanner.nextLine();
+
+        registration.registerStudent("0", name, email, password, studentId, university);
+        return;
     }
 
     public static void startHomeownerRegistration(Registration registration, Scanner scanner) {
+        System.out.println("Homeowner Registration Page");
+        System.out.println("Enter your name:");
+        String name = scanner.nextLine();
+        System.out.println("Enter your email:");
+        String email = scanner.nextLine();
+        System.out.println("Enter your password:");
+        String password = scanner.nextLine();
+
+        registration.registerHomeowner(password, name, email, password, null);
+        return;
     }
 }
