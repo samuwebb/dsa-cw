@@ -13,7 +13,7 @@ public class StudentRentals {
 
             switch (menuChoice) {
                 case 1:
-                    displayRegistration(registration, scanner);
+                    displayRegistrationMenu(registration, scanner);
                     break;
                 case 2:
                     active = false;
@@ -29,13 +29,12 @@ public class StudentRentals {
         System.out.println("2. Exit");
     }
 
-    public static void displayRegistration(Registration registration, Scanner scanner) {
-        int registerChoice = scanner.nextInt();
-
+    public static void displayRegistrationMenu(Registration registration, Scanner scanner) {
         System.out.println("Registration page");
         System.out.println("Please select one of the following:");
         System.out.println("1. Register as a Student");
         System.out.println("2. Register as a Homeowner");
+        int registerChoice = scanner.nextInt();
 
         switch (registerChoice) {
             case 1:
