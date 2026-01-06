@@ -121,7 +121,7 @@ public class StudentRentals {
                 displayPropertyUpdateMenu(propertyHandler, scanner);
                 break;
             case 4:
-                break;
+                startPropertyDeletion(propertyHandler, scanner);
             case 5:
                 break;
         }
@@ -175,6 +175,21 @@ public class StudentRentals {
         String description = scanner.next();
 
         propertyHandler.listProperty(address, description, null);
+        return;
+    }
+
+    public static void startPropertyDeletion(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Property Deletion Page");
+        System.out.println("Enter property address:");
+        String address = scanner.next();
+
+        if (!propertyHandler.doesPropertyExists(address)) {
+            System.out.println("Property does not exist.");
+            return;
+        }
+
+        Property property = propertyHandler.getPropertyFromAddress(address);
+        propertyHandler.deleteProperty(property);
         return;
     }
 

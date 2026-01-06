@@ -14,6 +14,10 @@ public class PropertyHandler {
         return newProperty;
     }
 
+    public void deleteProperty(Property property) {
+        systemData.getProperties().remove(property);
+    }
+
     public Room createRoom(Property property, String roomType, float monthlyRent, String description, String status,
             String startDate, String endDate) {
         Room newRoom = new Room(property, roomType, monthlyRent, description, status, startDate, endDate);
