@@ -72,7 +72,7 @@ public class StudentRentals {
         System.out.println("Enter your university:");
         String university = scanner.next();
 
-        registration.registerStudent("0", name, email, password, studentId, university);
+        registration.registerStudent(name, email, password, studentId, university);
         return;
     }
 
@@ -85,7 +85,7 @@ public class StudentRentals {
         System.out.println("Enter your password:");
         String password = scanner.next();
 
-        registration.registerHomeowner("1", name, email, password, null);
+        registration.registerHomeowner(name, email, password, null);
         return;
     }
 

@@ -2,8 +2,8 @@ public class Student extends User {
     private String studentId;
     private String university;
 
-    public Student(String userId, String name, String email, String passHash, String studentId, String university) {
-        super(userId, name, email, passHash);
+    public Student(String name, String email, String passHash, String studentId, String university) {
+        super(name, email, passHash);
         this.studentId = studentId;
         this.university = university;
     }
