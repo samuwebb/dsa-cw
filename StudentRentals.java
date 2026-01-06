@@ -27,6 +27,7 @@ public class StudentRentals {
 
         System.out.println(systemData.getStudents());
         System.out.println(systemData.getHomeowners());
+        System.out.println(systemData.getProperties());
     }
 
     public static void displayMainMenu() {
