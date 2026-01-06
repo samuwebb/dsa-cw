@@ -72,8 +72,7 @@ public class StudentRentals {
         System.out.println("Enter your university:");
         String university = scanner.next();
 
-        boolean emailUnique = registration.isEmailUnique(email);
-        if (!emailUnique) {
+        if (!registration.isEmailUnique(email)) {
             System.out.println("Email already exists.");
             return;
         }
@@ -90,6 +89,11 @@ public class StudentRentals {
         String email = scanner.next();
         System.out.println("Enter your password:");
         String password = scanner.next();
+
+        if (!registration.isEmailUnique(email)) {
+            System.out.println("Email already exists.");
+            return;
+        }
 
         registration.registerHomeowner(name, email, password, null);
         return;
