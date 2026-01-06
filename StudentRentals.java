@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class StudentRentals {
     public static void main(String[] args) {
         SystemData systemData = new SystemData();
-        Registration registration = new Registration();
+        Registration registration = new Registration(systemData);
         Scanner scanner = new Scanner(System.in);
 
         boolean active = true;
@@ -20,6 +20,9 @@ public class StudentRentals {
                     break;
             }
         }
+
+        System.out.println(systemData.getStudents());
+        System.out.println(systemData.getHomeowners());
     }
 
     public static void displayMainMenu() {
@@ -39,25 +42,28 @@ public class StudentRentals {
         switch (registerChoice) {
             case 1:
                 startStudentRegistration(registration, scanner);
+                break;
             case 2:
                 startHomeownerRegistration(registration, scanner);
+                break;
             case 3:
-                return;
+                break;
         }
+        return;
     }
 
     public static void startStudentRegistration(Registration registration, Scanner scanner) {
         System.out.println("Student Registration Page");
         System.out.println("Enter your name:");
-        String name = scanner.nextLine();
+        String name = scanner.next();
         System.out.println("Enter your email:");
-        String email = scanner.nextLine();
+        String email = scanner.next();
         System.out.println("Enter your password:");
-        String password = scanner.nextLine();
+        String password = scanner.next();
         System.out.println("Enter your student id:");
-        String studentId = scanner.nextLine();
+        String studentId = scanner.next();
         System.out.println("Enter your university:");
-        String university = scanner.nextLine();
+        String university = scanner.next();
 
         registration.registerStudent("0", name, email, password, studentId, university);
         return;
@@ -66,11 +72,11 @@ public class StudentRentals {
     public static void startHomeownerRegistration(Registration registration, Scanner scanner) {
         System.out.println("Homeowner Registration Page");
         System.out.println("Enter your name:");
-        String name = scanner.nextLine();
+        String name = scanner.next();
         System.out.println("Enter your email:");
-        String email = scanner.nextLine();
+        String email = scanner.next();
         System.out.println("Enter your password:");
-        String password = scanner.nextLine();
+        String password = scanner.next();
 
         registration.registerHomeowner(password, name, email, password, null);
         return;
