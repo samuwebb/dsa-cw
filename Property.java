@@ -12,4 +12,20 @@ public class Property {
         this.description = description;
         this.rooms = rooms;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public float getAverageRating() {
+        return averageRating;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
 }
