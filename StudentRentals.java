@@ -72,6 +72,12 @@ public class StudentRentals {
         System.out.println("Enter your university:");
         String university = scanner.next();
 
+        boolean emailUnique = registration.isEmailUnique(email);
+        if (!emailUnique) {
+            System.out.println("Email already exists.");
+            return;
+        }
+
         registration.registerStudent(name, email, password, studentId, university);
         return;
     }
