@@ -112,6 +112,7 @@ public class StudentRentals {
 
         switch (propertyChoice) {
             case 1:
+                startPropertyView(propertyHandler, scanner);
                 break;
             case 2:
                 startPropertyListing(propertyHandler, scanner);
@@ -147,6 +148,22 @@ public class StudentRentals {
             case 4:
                 break;
         }
+        return;
+    }
+
+    public static void startPropertyView(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Property Viewing Page");
+        System.out.println("Enter property address:");
+        String address = scanner.next();
+
+        if (!propertyHandler.doesPropertyExists(address)) {
+            System.out.println("Property does not exist.");
+            return;
+        }
+
+        Property property = propertyHandler.getPropertyFromAddress(address);
+        System.out.println("Property address: " + property.getAddress());
+        System.out.println("Property description: " + property.getDescription());
         return;
     }
 
