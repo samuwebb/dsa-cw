@@ -175,7 +175,13 @@ public class StudentRentals {
         System.out.println("Enter end date (YYYY-MM-DD):");
         String endDate = scanner.next();
 
-        propertyHandler.createRoom(null, roomType, 0, description, description, startDate, endDate);
+        if (!propertyHandler.doesPropertyExists(address)) {
+            System.out.println("Property does not exist.");
+            return;
+        }
+
+        Property property = propertyHandler.getPropertyFromAddress(address);
+        propertyHandler.createRoom(property, roomType, 0, description, description, startDate, endDate);
         return;
     }
 }

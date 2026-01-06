@@ -20,4 +20,24 @@ public class PropertyHandler {
         systemData.getRooms().add(newRoom);
         return newRoom;
     }
+
+    public Property getPropertyFromAddress(String address) {
+        Property theProperty = null;
+
+        for (Property property : systemData.getProperties()) {
+            if (address.equals(property.getAddress())) {
+                theProperty = property;
+            }
+        }
+        return theProperty;
+    }
+
+    public boolean doesPropertyExists(String address) {
+        for (Property property : systemData.getProperties()) {
+            if (address.equals(property.getAddress())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
