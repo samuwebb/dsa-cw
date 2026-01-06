@@ -1,5 +1,5 @@
 public class Room {
-    String roomId;
+    Property property;
     String roomType;
     float monthlyRent;
     String description;
@@ -7,9 +7,9 @@ public class Room {
     String startDate;
     String endDate;
 
-    public Room(String roomId, String roomType, float monthlyRent, String description, String status, String startDate,
+    public Room(Property property, String roomType, float monthlyRent, String description, String status, String startDate,
             String endDate) {
-        this.roomId = roomId;
+        this.property = property;
         this.roomType = roomType;
         this.monthlyRent = monthlyRent;
         this.description = description;
