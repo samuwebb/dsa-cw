@@ -106,12 +106,37 @@ public class StudentRentals {
                 startPropertyListing(propertyHandler, scanner);
                 break;
             case 3:
+                displayPropertyMenu(propertyHandler, scanner);
                 break;
             case 4:
                 break;
             case 5:
                 break;
         }
+        return;
+    }
+
+    public static void displayPropertyUpdateMenu(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Update Property");
+        System.out.println("Please select one of the following:");
+        System.out.println("1. Update status");
+        System.out.println("2. Create a room");
+        System.out.println("3. Delete a room");
+        System.out.println("4. Exit");
+        int propertyUpdateChoice = scanner.nextInt();
+
+        switch (propertyUpdateChoice) {
+            case 1:
+                break;
+            case 2:
+                startRoomCreation(propertyHandler, scanner);
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+        }
+        return;
     }
 
     public static void startPropertyListing(PropertyHandler propertyHandler, Scanner scanner) {
@@ -122,6 +147,25 @@ public class StudentRentals {
         String description = scanner.next();
 
         propertyHandler.listProperty(address, description, null);
+        return;
+    }
+
+    public static void startRoomCreation(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Room Creation Page");
+        System.out.println("Enter property address:");
+        String address = scanner.next();
+        System.out.println("Enter room type:");
+        String roomType = scanner.next();
+        System.out.println("Enter monthly rent:");
+        Float monthlyRent = scanner.nextFloat();
+        System.out.println("Enter description:");
+        String description = scanner.next();
+        System.out.println("Enter start date (YYYY-MM-DD):");
+        String startDate = scanner.next();
+        System.out.println("Enter end date (YYYY-MM-DD):");
+        String endDate = scanner.next();
+
+        propertyHandler.createRoom(null, roomType, 0, description, description, startDate, endDate);
         return;
     }
 }
