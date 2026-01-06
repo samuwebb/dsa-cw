@@ -8,17 +8,43 @@ public class Registration {
         this.systemData = systemData;
     }
 
-    public Homeowner registerHomeowner(String userId, String name, String email, String passHash,
+    public Homeowner registerHomeowner(String name, String email, String passHash,
             List<Property> properties) {
-        Homeowner newOwner = new Homeowner(userId, name, email, passHash, properties);
+        if (!isEmailUnique(email)) {
+            return null;
+        }
+
+        Homeowner newOwner = new Homeowner(name, email, passHash, properties);
         systemData.getHomeowners().add(newOwner);
         return newOwner;
     }
 
-    public Student registerStudent(String userId, String name, String email, String passHash, String studentId,
+    public Student registerStudent(String name, String email, String passHash, String studentId,
             String university) {
-        Student newStudent = new Student(userId, name, email, passHash, studentId, university);
+        if (!isEmailUnique(email)) {
+            return null;
+        }
+
+        Student newStudent = new Student(name, email, passHash, studentId, university);
         systemData.getStudents().add(newStudent);
         return newStudent;
+    }
+
+    public boolean isEmailUnique(String email) {
+        List<Student> students = systemData.getStudents();
+        List<Homeowner> homeowners = systemData.getHomeowners();
+
+        for (Student student : students) {
+            if (email.equals(student.getEmail())) {
+                return false;
+            }
+        }
+
+        for (Homeowner homeowner : homeowners) {
+            if (email.equals(homeowner.getEmail())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
