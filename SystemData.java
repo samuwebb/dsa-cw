@@ -5,6 +5,7 @@ public class SystemData {
     private List<Student> students = new ArrayList<>();
     private List<Homeowner> homeowners = new ArrayList<>();
     private List<Property> properties = new ArrayList<>();
+    private List<Room> rooms = new ArrayList<>();
 
     public List<Student> getStudents() {
         return students;
@@ -16,5 +17,9 @@ public class SystemData {
 
     public List<Property> getProperties() {
         return properties;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
     }
 }
