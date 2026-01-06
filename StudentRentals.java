@@ -116,7 +116,7 @@ public class StudentRentals {
                 startPropertyListing(propertyHandler, scanner);
                 break;
             case 3:
-                displayPropertyMenu(propertyHandler, scanner);
+                displayPropertyUpdateMenu(propertyHandler, scanner);
                 break;
             case 4:
                 break;
@@ -181,7 +181,7 @@ public class StudentRentals {
         }
 
         Property property = propertyHandler.getPropertyFromAddress(address);
-        propertyHandler.createRoom(property, roomType, 0, description, description, startDate, endDate);
+        propertyHandler.createRoom(property, roomType, monthlyRent, description, description, startDate, endDate);
         return;
     }
 }
