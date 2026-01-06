@@ -4,6 +4,10 @@ import java.util.List;
 public class Registration {
     SystemData systemData;
 
+    public Registration(SystemData systemData) {
+        this.systemData = systemData;
+    }
+
     public Homeowner registerHomeowner(String userId, String name, String email, String passHash,
             List<Property> properties) {
         Homeowner newOwner = new Homeowner(userId, name, email, passHash, properties);
