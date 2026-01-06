@@ -4,6 +4,7 @@ public class StudentRentals {
     public static void main(String[] args) {
         SystemData systemData = new SystemData();
         Registration registration = new Registration(systemData);
+        PropertyHandler propertyHandler = new PropertyHandler(systemData);
         Scanner scanner = new Scanner(System.in);
 
         boolean active = true;
@@ -16,6 +17,9 @@ public class StudentRentals {
                     displayRegistrationMenu(registration, scanner);
                     break;
                 case 2:
+                    displayPropertyMenu(propertyHandler, scanner);
+                    break;
+                case 3:
                     active = false;
                     break;
             }
@@ -29,7 +33,8 @@ public class StudentRentals {
         System.out.println("Welcome to StudentRentals!");
         System.out.println("Please select one of the following:");
         System.out.println("1. Register");
-        System.out.println("2. Exit");
+        System.out.println("2. Property");
+        System.out.println("3. Exit");
     }
 
     public static void displayRegistrationMenu(Registration registration, Scanner scanner) {
@@ -37,6 +42,7 @@ public class StudentRentals {
         System.out.println("Please select one of the following:");
         System.out.println("1. Register as a Student");
         System.out.println("2. Register as a Homeowner");
+        System.out.println("3. Exit");
         int registerChoice = scanner.nextInt();
 
         switch (registerChoice) {
@@ -78,7 +84,43 @@ public class StudentRentals {
         System.out.println("Enter your password:");
         String password = scanner.next();
 
-        registration.registerHomeowner(password, name, email, password, null);
+        registration.registerHomeowner("1", name, email, password, null);
+        return;
+    }
+
+    public static void displayPropertyMenu(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Property Menu");
+        System.out.println("Please select one of the following:");
+        System.out.println("1. View a property");
+        System.out.println("2. List a property");
+        System.out.println("3. Update a property");
+        System.out.println("4. Remove a property");
+        System.out.println("5. Exit");
+        int propertyChoice = scanner.nextInt();
+
+        switch (propertyChoice) {
+            case 1:
+                break;
+            case 2:
+                startPropertyListing(propertyHandler, scanner);
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+        }
+    }
+
+    public static void startPropertyListing(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Property Listing Page");
+        System.out.println("Enter property address:");
+        String address = scanner.next();
+        System.out.println("Enter property description:");
+        String description = scanner.next();
+
+        propertyHandler.listProperty(address, description, null);
         return;
     }
 }
