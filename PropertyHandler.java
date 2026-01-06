@@ -13,4 +13,11 @@ public class PropertyHandler {
         systemData.getProperties().add(newProperty);
         return newProperty;
     }
+
+    public Room createRoom(Property property, String roomType, float monthlyRent, String description, String status,
+            String startDate, String endDate) {
+        Room newRoom = new Room(property, roomType, monthlyRent, description, status, startDate, endDate);
+        systemData.getRooms().add(newRoom);
+        return newRoom;
+    }
 }
