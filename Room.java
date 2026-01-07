@@ -7,7 +7,8 @@ public class Room {
     String startDate;
     String endDate;
 
-    public Room(Property property, String roomType, float monthlyRent, String description, String status, String startDate,
+    public Room(Property property, String roomType, float monthlyRent, String description, String status,
+            String startDate,
             String endDate) {
         this.property = property;
         this.roomType = roomType;
@@ -40,5 +41,9 @@ public class Room {
 
     public String getEndDate() {
         return endDate;
+    }
+
+    public void setStatus(String newStatus) {
+        status = newStatus;
     }
 }
