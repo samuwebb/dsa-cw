@@ -1,0 +1,215 @@
+{
+    "students": [
+        {
+            "name": "Alice Smith",
+            "email": "asmith@cardiff.ac.uk",
+            "passHash": null,
+            "studentId": "24013532",
+            "university": "Cardiff"
+        },
+        {
+            "name": "Bob Jones",
+            "email": "bjones@cardiff.ac.uk",
+            "passHash": null,
+            "studentId": "24056127",
+            "university": "Cardiff"
+        },
+        {
+            "name": "Charlie Day",
+            "email": "cday@cardiff.ac.uk",
+            "passHash": null,
+            "studentId": "24093755",
+            "university": "Cardiff"
+        },
+        {
+            "name": "Diana Prince",
+            "email": "diana.p@swansea.ac.uk",
+            "passHash": null,
+            "studentId": "SWAN-10293P",
+            "university": "Swansea"
+        },
+        {
+            "name": "Edward Norton",
+            "email": "edward.n@swansea.ac.uk",
+            "passHash": null,
+            "studentId": "SWAN-10482N",
+            "university": "Swansea"
+        }
+    ],
+    "homeowners": [
+        {
+            "name": "Sarah Jenkins",
+            "email": "s.jenkins@gmail.com",
+            "passHash": null,
+            "properties": [
+                {
+                    "address": "10 Cathays Terrace",
+                    "city": "Cardiff",
+                    "description": "Near Student Union",
+                    "averageRating": 3.4,
+                    "rooms": [
+                        {
+                            "roomType": "Single",
+                            "monthlyRent": 450,
+                            "description": "Cosy rear-facing room",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "Double",
+                            "monthlyRent": 550,
+                            "description": "Large bay window",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "En-suite",
+                            "monthlyRent": 650,
+                            "description": "Private bathroom",
+                            "status": "Occupied",
+                            "startDate": "2025-09-01",
+                            "endDate": "2026-06-30"
+                        },
+                        {
+                            "roomType": "Studio",
+                            "monthlyRent": 850,
+                            "description": "Self-contained unit",
+                            "status": "Available",
+                            "startDate": "2026-07-01",
+                            "endDate": "2027-07-01"
+                        }
+                    ]
+                },
+                {
+                    "address": "25 Crwys Road",
+                    "city": "Cardiff",
+                    "description": "Traditional Townhouse",
+                    "averageRating": 3.2,
+                    "rooms": [
+                        {
+                            "roomType": "Double",
+                            "monthlyRent": 500,
+                            "description": "Newly painted room",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "Double",
+                            "monthlyRent": 500,
+                            "description": "Integrated desk space",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "Single",
+                            "monthlyRent": 400,
+                            "description": "Economy student room",
+                            "status": "Occupied",
+                            "startDate": "2025-09-15",
+                            "endDate": "2026-06-15"
+                        },
+                        {
+                            "roomType": "Attic",
+                            "monthlyRent": 450,
+                            "description": "Skylight view",
+                            "status": "Available",
+                            "startDate": "2026-08-01",
+                            "endDate": "2027-08-01"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Mark Wilson",
+            "email": "mwilson82@yahoo.co.uk",
+            "passHash": null,
+            "properties": [
+                {
+                    "address": "5 High Street",
+                    "city": "Swansea",
+                    "description": "City Centre Flat",
+                    "averageRating": 4.5,
+                    "rooms": [
+                        {
+                            "roomType": "Single",
+                            "monthlyRent": 380,
+                            "description": "City centre location",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "Single",
+                            "monthlyRent": 380,
+                            "description": "Basic student pod",
+                            "status": "Occupied",
+                            "startDate": "2025-10-01",
+                            "endDate": "2026-07-01"
+                        },
+                        {
+                            "roomType": "Double",
+                            "monthlyRent": 480,
+                            "description": "Shared balcony access",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "En-suite",
+                            "monthlyRent": 580.0,
+                            "description": "Modern shower room",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        }
+                    ]
+                },
+                {
+                    "address": "18 Bridge Street",
+                    "city": "Swansea",
+                    "description": "Renovated House",
+                    "averageRating": 2.8,
+                    "rooms": [
+                        {
+                            "roomType": "Large Dbl",
+                            "monthlyRent": 520,
+                            "description": "King-size bed included",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "Med Dbl",
+                            "monthlyRent": 480,
+                            "description": "Built-in wardrobes",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "Small Dbl",
+                            "monthlyRent": 450,
+                            "description": "Rear garden access",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        },
+                        {
+                            "roomType": "Single",
+                            "monthlyRent": 400,
+                            "description": "Quiet study space",
+                            "status": "Available",
+                            "startDate": "2026-09-01",
+                            "endDate": "2027-06-30"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
