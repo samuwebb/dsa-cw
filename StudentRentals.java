@@ -176,7 +176,7 @@ public class StudentRentals {
         System.out.println("Enter property description:");
         String description = scanner.next();
 
-        propertyHandler.listProperty(address, description, null);
+        propertyHandler.listProperty(address, description);
         return;
     }
 

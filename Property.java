@@ -5,12 +5,11 @@ public class Property {
     private String address;
     private String description;
     private float averageRating;
-    private List<Room> rooms;
+    private List<Room> rooms = new ArrayList<>();
 
-    public Property(String address, String description, List<Room> rooms) {
+    public Property(String address, String description) {
         this.address = address;
         this.description = description;
-        this.rooms = rooms;
     }
 
     public String getAddress() {
