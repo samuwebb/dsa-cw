@@ -32,7 +32,13 @@ public class PropertyHandler {
         return property;
     }
 
+    public List<Property> getPropertiesByCity(String city) {
+        Map<String, List<Property>> propertiesByCity = systemData.getPropertiesByCity();
+        List<Property> properties = propertiesByCity.get(city);
+        return properties;
+    }
+
     public boolean doesPropertyExists(String address) {
-        return getPropertyFromAddress(address) == null;
+        return getPropertyFromAddress(address) != null;
     }
 }
