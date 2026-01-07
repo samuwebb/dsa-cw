@@ -231,6 +231,12 @@ public class StudentRentals {
         }
 
         Property property = propertyHandler.getPropertyFromAddress(address);
+
+        if (property.isEmpty()) {
+            System.out.println("Property has no rooms.");
+            return;
+        }
+
         List<Room> rooms = property.getRooms();
         int iterationId = 1;
 
