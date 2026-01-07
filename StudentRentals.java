@@ -177,10 +177,12 @@ public class StudentRentals {
         System.out.println("Property Listing Page");
         System.out.println("Enter property address:");
         String address = scanner.next();
+        System.out.println("Enter property city:");
+        String city = scanner.next();
         System.out.println("Enter property description:");
         String description = scanner.next();
 
-        propertyHandler.listProperty(address, description);
+        propertyHandler.listProperty(address, city, description);
         return;
     }
 
