@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class PropertyHandler {
     SystemData systemData;
@@ -10,7 +11,7 @@ public class PropertyHandler {
 
     public Property listProperty(String address, String description) {
         Property newProperty = new Property(address, description);
-        systemData.getProperties().add(newProperty);
+        systemData.addProperty(newProperty);
         return newProperty;
     }
 
@@ -26,14 +27,9 @@ public class PropertyHandler {
     }
 
     public Property getPropertyFromAddress(String address) {
-        Property theProperty = null;
-
-        for (Property property : systemData.getProperties()) {
-            if (address.equals(property.getAddress())) {
-                theProperty = property;
-            }
-        }
-        return theProperty;
+        Map<String, Property> addressRegistry = systemData.getAddressRegistry();
+        Property property = addressRegistry.get(address);
+        return property;
     }
 
     public boolean doesPropertyExists(String address) {
