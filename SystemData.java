@@ -7,6 +7,7 @@ public class SystemData {
     private List<Student> students = new ArrayList<>();
     private List<Homeowner> homeowners = new ArrayList<>();
     private List<Property> properties = new ArrayList<>();
+    private User currentUser;
 
     private Map<String, User> userEmailIndex = new HashMap<>();
     private Map<String, Property> addressRegistry = new HashMap<>();
@@ -22,6 +23,10 @@ public class SystemData {
 
     public List<Property> getProperties() {
         return properties;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     public Map<String, User> getUserEmailIndex() {
@@ -54,5 +59,9 @@ public class SystemData {
         propertiesByCity.putIfAbsent(newProperty.getCity(), new ArrayList<>());
         propertiesByCity.get(newProperty.getCity()).add(newProperty);
         return;
+    }
+
+    public void setCurrentUser(User newUser) {
+        currentUser = newUser;
     }
 }
