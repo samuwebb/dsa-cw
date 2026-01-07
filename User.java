@@ -2,11 +2,13 @@ public class User {
     protected String name;
     protected String email;
     protected String passHash;
+    protected String role;
 
-    public User(String name, String email, String passHash) {
+    public User(String name, String email, String passHash, String role) {
         this.name = name;
         this.email = email;
         this.passHash = passHash;
+        this.role = role;
     }
 
     public String getName() {
@@ -15,5 +17,9 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getRole() {
+        return role;
     }
 }
