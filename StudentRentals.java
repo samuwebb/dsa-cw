@@ -258,7 +258,7 @@ public class StudentRentals {
         return;
     }
 
-    public void displaySearchMenu(PropertyHandler propertyHandler, Scanner scanner) {
+    public static void displaySearchMenu(PropertyHandler propertyHandler, Scanner scanner) {
         System.out.println("Property Search Menu");
         System.out.println("1. View all rooms");
         System.out.println("2. Filter room by criteria");
@@ -278,11 +278,11 @@ public class StudentRentals {
         return;
     }
 
-    public void startGlobalSearch(PropertyHandler propertyHandler, Scanner scanner) {
+    public static void startGlobalSearch(PropertyHandler propertyHandler, Scanner scanner) {
         return;
     }
 
-    public void startFilterSearch(PropertyHandler propertyHandler, Scanner scanner) {
+    public static void startFilterSearch(PropertyHandler propertyHandler, Scanner scanner) {
         return;
     }
 }
