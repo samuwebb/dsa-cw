@@ -24,6 +24,18 @@ public class SystemData {
         return properties;
     }
 
+    public Map<String, User> getUserEmailIndex() {
+        return userEmailIndex;
+    }
+
+    public Map<String, Property> getAddressRegistry() {
+        return addressRegistry;
+    }
+
+    public Map<String, List<Property>> getPropertiesByCity() {
+        return propertiesByCity;
+    }
+
     public void addStudent(Student newStudent) {
         students.add(newStudent);
         userEmailIndex.put(newStudent.getEmail(), newStudent);
@@ -33,6 +45,12 @@ public class SystemData {
     public void addHomeowner(Homeowner newHomeowner) {
         homeowners.add(newHomeowner);
         userEmailIndex.put(newHomeowner.getEmail(), newHomeowner);
+        return;
+    }
+
+    public void addProperty(Property newProperty) {
+        properties.add(newProperty);
+        addressRegistry.put(newProperty.getAddress(), newProperty);
         return;
     }
 }
