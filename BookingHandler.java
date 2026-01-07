@@ -8,8 +8,8 @@ public class BookingHandler {
         this.systemData = systemData;
     }
 
-    public Booking createBooking(Student student, Property property, String status, String startDate, String endDate) {
-        Booking newBooking = new Booking(student, property, status, startDate, endDate);
+    public Booking createBooking(Student student, Room room, String status, String startDate, String endDate) {
+        Booking newBooking = new Booking(student, room, status, startDate, endDate);
         systemData.addBooking(newBooking);
         return newBooking;
     }
