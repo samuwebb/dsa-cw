@@ -8,8 +8,8 @@ public class PropertyHandler {
         this.systemData = systemData;
     }
 
-    public Property listProperty(String address, String description, List<Room> rooms) {
-        Property newProperty = new Property(address, description, rooms);
+    public Property listProperty(String address, String description) {
+        Property newProperty = new Property(address, description);
         systemData.getProperties().add(newProperty);
         return newProperty;
     }
