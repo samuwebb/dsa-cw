@@ -28,6 +28,10 @@ public class Property {
         return rooms;
     }
 
+    public boolean isEmpty() {
+        return rooms.isEmpty();
+    }
+
     public void addRoom(Room room) {
         rooms.add(room);
     }
