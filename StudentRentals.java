@@ -7,6 +7,7 @@ public class StudentRentals {
         SystemData systemData = new SystemData();
         Registration registration = new Registration(systemData);
         PropertyHandler propertyHandler = new PropertyHandler(systemData);
+        BookingHandler bookingHandler = new BookingHandler(systemData);
         Scanner scanner = new Scanner(System.in);
 
         boolean active = true;
@@ -16,7 +17,7 @@ public class StudentRentals {
 
             switch (menuChoice) {
                 case 1:
-                    displayRegistrationMenu(registration, scanner);
+                    displayRegistrationMenu(systemData, registration, scanner);
                     break;
                 case 2:
                     displayPropertyMenu(propertyHandler, scanner);
@@ -25,6 +26,8 @@ public class StudentRentals {
                     displaySearchMenu(propertyHandler, scanner);
                     break;
                 case 4:
+                    displayBookingMenu(systemData, bookingHandler, scanner);
+                case 5:
                     active = false;
                     break;
             }
@@ -41,10 +44,11 @@ public class StudentRentals {
         System.out.println("1. Register an account");
         System.out.println("2. Manage a property");
         System.out.println("3. Search for a room");
-        System.out.println("4. Exit");
+        System.out.println("4. Manage bookings");
+        System.out.println("5. Exit");
     }
 
-    public static void displayRegistrationMenu(Registration registration, Scanner scanner) {
+    public static void displayRegistrationMenu(SystemData systemData, Registration registration, Scanner scanner) {
         System.out.println("Registration Menu");
         System.out.println("Please select one of the following:");
         System.out.println("1. Register as a Student");
@@ -61,7 +65,7 @@ public class StudentRentals {
                 startHomeownerRegistration(registration, scanner);
                 break;
             case 3:
-                startLogin(registration, scanner);
+                startLogin(systemData, registration, scanner);
                 break;
             case 4:
                 break;
@@ -109,7 +113,7 @@ public class StudentRentals {
         return;
     }
 
-    public static void startLogin(Registration registration, Scanner scanner) {
+    public static void startLogin(SystemData systemData, Registration registration, Scanner scanner) {
         System.out.println("Login Page");
         System.out.println("Enter your email:");
         String email = scanner.next();
@@ -117,7 +121,7 @@ public class StudentRentals {
         User user = registration.login(email);
         registration.changeUser(user);
 
-        System.out.println("Welcome " + registration.getCurrentUser().getName());
+        System.out.println("Welcome " + systemData.getCurrentUser().getName());
         return;
     }
 
@@ -318,6 +322,39 @@ public class StudentRentals {
                 System.out.println("Start date: " + room.getStartDate());
                 System.out.println("End date: " + room.getEndDate());
             }
+        }
+        return;
+    }
+
+    public static void displayBookingMenu(SystemData systemData, BookingHandler bookingHandler, Scanner scanner) {
+        System.out.println("Booking Menu");
+        System.out.println("Please select one of the following:");
+        System.out.println("1. View bookings");
+        System.out.println("2. Delete a booking");
+        System.out.println("3. Exit");
+        int bookingChoice = scanner.nextInt();
+
+        switch (bookingChoice) {
+            case 1:
+                startBookingView(systemData, bookingHandler, scanner);
+            case 2:
+                break;
+            case 3:
+                break;
+        }
+        return;
+    }
+
+    public static void startBookingView(SystemData systemData, BookingHandler bookingHandler, Scanner scanner) {
+        System.out.println("Bookings View Page");
+        List<Booking> bookings = bookingHandler.getBookingsByEmail(systemData.getCurrentUser().getEmail());
+
+        for (Booking booking : bookings) {
+            System.out.println("Student " + booking.getStudent());
+            System.out.println("Property: " + booking.getProperty());
+            System.out.println("Status: " + booking.getStatus());
+            System.out.println("Start date: " + booking.getStartDate());
+            System.out.println("End date: " + booking.getEndDate());
         }
         return;
     }
