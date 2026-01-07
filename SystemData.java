@@ -51,6 +51,8 @@ public class SystemData {
     public void addProperty(Property newProperty) {
         properties.add(newProperty);
         addressRegistry.put(newProperty.getAddress(), newProperty);
+        propertiesByCity.putIfAbsent(newProperty.getCity(), new ArrayList<>());
+        propertiesByCity.get(newProperty.getCity()).add(newProperty);
         return;
     }
 }
