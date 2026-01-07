@@ -28,4 +28,8 @@ public class Property {
     public List<Room> getRooms() {
         return rooms;
     }
+
+    public void addRoom(Room room) {
+        rooms.add(room);
+    }
 }
