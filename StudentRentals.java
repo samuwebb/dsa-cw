@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class StudentRentals {
@@ -285,6 +286,23 @@ public class StudentRentals {
     }
 
     public static void startFilterSearch(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Room Filter Page");
+        System.out.println("Enter city or university area:");
+        String city = scanner.next();
+
+        List<Property> properties = propertyHandler.getPropertiesByCity(city);
+
+        for (Property property : properties) {
+            for (Room room : property.getRooms()) {
+                System.out.println("Property address: " + property.getAddress());
+                System.out.println("Room type: " + room.getRoomType());
+                System.out.println("Monthly rent: " + room.getMonthlyRent());
+                System.out.println("Description: " + room.getDescription());
+                System.out.println("Status: " + room.getStatus());
+                System.out.println("Start date: " + room.getStartDate());
+                System.out.println("End date: " + room.getEndDate());
+            }
+        }
         return;
     }
 }
