@@ -49,7 +49,8 @@ public class StudentRentals {
         System.out.println("Please select one of the following:");
         System.out.println("1. Register as a Student");
         System.out.println("2. Register as a Homeowner");
-        System.out.println("3. Exit");
+        System.out.println("3. Login");
+        System.out.println("4. Exit");
         int registerChoice = scanner.nextInt();
 
         switch (registerChoice) {
@@ -60,6 +61,9 @@ public class StudentRentals {
                 startHomeownerRegistration(registration, scanner);
                 break;
             case 3:
+                startLogin(registration, scanner);
+                break;
+            case 4:
                 break;
         }
         return;
@@ -102,6 +106,18 @@ public class StudentRentals {
         }
 
         registration.registerHomeowner(name, email, password, null);
+        return;
+    }
+
+    public static void startLogin(Registration registration, Scanner scanner) {
+        System.out.println("Login Page");
+        System.out.println("Enter your email:");
+        String email = scanner.next();
+
+        User user = registration.login(email);
+        registration.changeUser(user);
+
+        System.out.println("Welcome " + registration.getCurrentUser().getName());
         return;
     }
 
