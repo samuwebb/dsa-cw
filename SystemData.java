@@ -7,11 +7,13 @@ public class SystemData {
     private List<Student> students = new ArrayList<>();
     private List<Homeowner> homeowners = new ArrayList<>();
     private List<Property> properties = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
     private User currentUser;
 
     private Map<String, User> userEmailIndex = new HashMap<>();
     private Map<String, Property> addressRegistry = new HashMap<>();
     private Map<String, List<Property>> propertiesByCity = new HashMap<>();
+    private Map<String, List<Booking>> bookingsByEmail = new HashMap<>();
 
     public List<Student> getStudents() {
         return students;
@@ -23,6 +25,10 @@ public class SystemData {
 
     public List<Property> getProperties() {
         return properties;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
     public User getCurrentUser() {
@@ -39,6 +45,10 @@ public class SystemData {
 
     public Map<String, List<Property>> getPropertiesByCity() {
         return propertiesByCity;
+    }
+
+    public Map<String, List<Booking>> getBookingsByEmail() {
+        return bookingsByEmail;
     }
 
     public void addStudent(Student newStudent) {
@@ -58,6 +68,13 @@ public class SystemData {
         addressRegistry.put(newProperty.getAddress(), newProperty);
         propertiesByCity.putIfAbsent(newProperty.getCity(), new ArrayList<>());
         propertiesByCity.get(newProperty.getCity()).add(newProperty);
+        return;
+    }
+
+    public void addBooking(Booking newBooking) {
+        bookings.add(newBooking);
+        bookingsByEmail.putIfAbsent(newBooking.getStudent().getEmail(), new ArrayList<>());
+        bookingsByEmail.get(newBooking.getStudent().getEmail()).add(newBooking);
         return;
     }
 
