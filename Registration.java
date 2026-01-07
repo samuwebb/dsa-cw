@@ -37,11 +37,6 @@ public class Registration {
         return user;
     }
 
-    public void changeUser(User user) {
-        systemData.setCurrentUser(user);
-        return;
-    }
-
     public User getUserFromEmail(String email) {
         Map<String, User> userEmailIndex = systemData.getUserEmailIndex();
         User user = userEmailIndex.get(email);
@@ -50,9 +45,5 @@ public class Registration {
 
     public boolean isEmailUnique(String email) {
         return getUserFromEmail(email) == null;
-    }
-
-    public User getCurrentUser() {
-        return systemData.getCurrentUser();
     }
 }
