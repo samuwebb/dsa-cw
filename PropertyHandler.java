@@ -9,8 +9,8 @@ public class PropertyHandler {
         this.systemData = systemData;
     }
 
-    public Property listProperty(String address, String description) {
-        Property newProperty = new Property(address, description);
+    public Property listProperty(String address, String city, String description) {
+        Property newProperty = new Property(address, city, description);
         systemData.addProperty(newProperty);
         return newProperty;
     }
