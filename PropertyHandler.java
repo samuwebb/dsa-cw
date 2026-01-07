@@ -33,11 +33,6 @@ public class PropertyHandler {
     }
 
     public boolean doesPropertyExists(String address) {
-        for (Property property : systemData.getProperties()) {
-            if (address.equals(property.getAddress())) {
-                return true;
-            }
-        }
-        return false;
+        return getPropertyFromAddress(address) == null;
     }
 }
