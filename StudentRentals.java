@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentRentals {
@@ -28,7 +29,6 @@ public class StudentRentals {
         System.out.println(systemData.getStudents());
         System.out.println(systemData.getHomeowners());
         System.out.println(systemData.getProperties());
-        System.out.println(systemData.getRooms());
     }
 
     public static void displayMainMenu() {
@@ -122,6 +122,7 @@ public class StudentRentals {
                 break;
             case 4:
                 startPropertyDeletion(propertyHandler, scanner);
+                break;
             case 5:
                 break;
         }
@@ -144,6 +145,7 @@ public class StudentRentals {
                 startRoomCreation(propertyHandler, scanner);
                 break;
             case 3:
+                startRoomDeletion(propertyHandler, scanner);
                 break;
             case 4:
                 break;
@@ -215,6 +217,34 @@ public class StudentRentals {
 
         Property property = propertyHandler.getPropertyFromAddress(address);
         propertyHandler.createRoom(property, roomType, monthlyRent, description, description, startDate, endDate);
+        return;
+    }
+
+    public static void startRoomDeletion(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Room Deletion Page");
+        System.out.println("Enter property address:");
+        String address = scanner.next();
+
+        if (!propertyHandler.doesPropertyExists(address)) {
+            System.out.println("Property does not exist.");
+            return;
+        }
+
+        Property property = propertyHandler.getPropertyFromAddress(address);
+        List<Room> rooms = property.getRooms();
+        int iterationId = 1;
+
+        for (Room room : rooms) {
+            System.out.println("Room " + iterationId);
+            System.out.println("Room type: " + room.getRoomType());
+            System.out.println("Description: " + room.getDescription());
+            iterationId++;
+        }
+
+        System.out.println("Please select a room from above to delete:");
+        int roomToDelete = scanner.nextInt();
+
+        rooms.remove(roomToDelete - 1);
         return;
     }
 }
