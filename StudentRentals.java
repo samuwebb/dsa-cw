@@ -21,6 +21,9 @@ public class StudentRentals {
                     displayPropertyMenu(propertyHandler, scanner);
                     break;
                 case 3:
+                    displaySearchMenu(propertyHandler, scanner);
+                    break;
+                case 4:
                     active = false;
                     break;
             }
@@ -34,9 +37,10 @@ public class StudentRentals {
     public static void displayMainMenu() {
         System.out.println("Welcome to StudentRentals!");
         System.out.println("Please select one of the following:");
-        System.out.println("1. Register");
-        System.out.println("2. Property");
-        System.out.println("3. Exit");
+        System.out.println("1. Register an account");
+        System.out.println("2. Manage a property");
+        System.out.println("3. Search for a room");
+        System.out.println("4. Exit");
     }
 
     public static void displayRegistrationMenu(Registration registration, Scanner scanner) {
@@ -251,6 +255,34 @@ public class StudentRentals {
         int roomToDelete = scanner.nextInt();
 
         rooms.remove(roomToDelete - 1);
+        return;
+    }
+
+    public void displaySearchMenu(PropertyHandler propertyHandler, Scanner scanner) {
+        System.out.println("Property Search Menu");
+        System.out.println("1. View all rooms");
+        System.out.println("2. Filter room by criteria");
+        System.out.println("3. Exit");
+        int searchChoice = scanner.nextInt();
+
+        switch (searchChoice) {
+            case 1:
+                startGlobalSearch(propertyHandler, scanner);
+                break;
+            case 2:
+                startFilterSearch(propertyHandler, scanner);
+                break;
+            case 3:
+                break;
+        }
+        return;
+    }
+
+    public void startGlobalSearch(PropertyHandler propertyHandler, Scanner scanner) {
+        return;
+    }
+
+    public void startFilterSearch(PropertyHandler propertyHandler, Scanner scanner) {
         return;
     }
 }
