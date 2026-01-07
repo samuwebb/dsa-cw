@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -23,7 +24,7 @@ public class StudentRentals {
                     displayPropertyMenu(propertyHandler, scanner);
                     break;
                 case 3:
-                    displaySearchMenu(propertyHandler, scanner);
+                    displaySearchMenu(systemData, propertyHandler, bookingHandler, scanner);
                     break;
                 case 4:
                     displayBookingMenu(systemData, bookingHandler, scanner);
@@ -53,8 +54,9 @@ public class StudentRentals {
         System.out.println("Please select one of the following:");
         System.out.println("1. Register as a Student");
         System.out.println("2. Register as a Homeowner");
-        System.out.println("3. Login");
-        System.out.println("4. Exit");
+        System.out.println("3. Login as a Student");
+        System.out.println("4. Login as a Homeowner");
+        System.out.println("5. Exit");
         int registerChoice = scanner.nextInt();
 
         switch (registerChoice) {
@@ -65,9 +67,12 @@ public class StudentRentals {
                 startHomeownerRegistration(registration, scanner);
                 break;
             case 3:
-                startLogin(systemData, registration, scanner);
+                startLoginStudent(systemData, registration, scanner);
                 break;
             case 4:
+                startLoginHomeowner(systemData, registration, scanner);
+                break;
+            case 5:
                 break;
         }
         return;
@@ -86,12 +91,12 @@ public class StudentRentals {
         System.out.println("Enter your university:");
         String university = scanner.next();
 
-        if (!registration.isEmailUnique(email)) {
+        if (!registration.isStudentEmailUnique(email)) {
             System.out.println("Email already exists.");
             return;
         }
 
-        registration.registerStudent(name, email, password, studentId, university);
+        registration.registerStudent(name, email, password, "Student", studentId, university);
         return;
     }
 
@@ -104,24 +109,34 @@ public class StudentRentals {
         System.out.println("Enter your password:");
         String password = scanner.next();
 
-        if (!registration.isEmailUnique(email)) {
+        if (!registration.isHomeownerEmailUnique(email)) {
             System.out.println("Email already exists.");
             return;
         }
 
-        registration.registerHomeowner(name, email, password, null);
+        registration.registerHomeowner(name, email, password, "Homeowner", null);
         return;
     }
 
-    public static void startLogin(SystemData systemData, Registration registration, Scanner scanner) {
+    public static void startLoginStudent(SystemData systemData, Registration registration, Scanner scanner) {
         System.out.println("Login Page");
         System.out.println("Enter your email:");
         String email = scanner.next();
 
-        User user = registration.login(email);
-        registration.changeUser(user);
+        Student student = registration.loginStudent(email);
+        systemData.setCurrentStudent(student);
+        System.out.println("Welcome " + systemData.getCurrentStudent().getName());
+        return;
+    }
 
-        System.out.println("Welcome " + systemData.getCurrentUser().getName());
+    public static void startLoginHomeowner(SystemData systemData, Registration registration, Scanner scanner) {
+        System.out.println("Login Page");
+        System.out.println("Enter your email:");
+        String email = scanner.next();
+
+        Homeowner homeowner = registration.loginHomeowner(email);
+        systemData.setCurrentHomeowner(homeowner);
+        System.out.println("Welcome " + systemData.getCurrentHomeowner().getName());
         return;
     }
 
@@ -281,7 +296,8 @@ public class StudentRentals {
         return;
     }
 
-    public static void displaySearchMenu(PropertyHandler propertyHandler, Scanner scanner) {
+    public static void displaySearchMenu(SystemData systemData, PropertyHandler propertyHandler,
+            BookingHandler bookingHandler, Scanner scanner) {
         System.out.println("Property Search Menu");
         System.out.println("1. View all rooms");
         System.out.println("2. Filter room by criteria");
@@ -293,7 +309,7 @@ public class StudentRentals {
                 startGlobalSearch(propertyHandler, scanner);
                 break;
             case 2:
-                startFilterSearch(propertyHandler, scanner);
+                startFilterSearch(systemData, propertyHandler, bookingHandler, scanner);
                 break;
             case 3:
                 break;
@@ -305,15 +321,20 @@ public class StudentRentals {
         return;
     }
 
-    public static void startFilterSearch(PropertyHandler propertyHandler, Scanner scanner) {
+    public static void startFilterSearch(SystemData systemData, PropertyHandler propertyHandler,
+            BookingHandler bookingHandler,
+            Scanner scanner) {
         System.out.println("Room Filter Page");
         System.out.println("Enter city or university area:");
         String city = scanner.next();
 
         List<Property> properties = propertyHandler.getPropertiesByCity(city);
+        List<Room> filteredRooms = new ArrayList<>();
+        int iterationId = 1;
 
         for (Property property : properties) {
             for (Room room : property.getRooms()) {
+                System.out.println("Room " + iterationId);
                 System.out.println("Property address: " + property.getAddress());
                 System.out.println("Room type: " + room.getRoomType());
                 System.out.println("Monthly rent: " + room.getMonthlyRent());
@@ -321,8 +342,16 @@ public class StudentRentals {
                 System.out.println("Status: " + room.getStatus());
                 System.out.println("Start date: " + room.getStartDate());
                 System.out.println("End date: " + room.getEndDate());
+                filteredRooms.add(room);
+                iterationId++;
             }
         }
+
+        System.out.println("Please select a room from above to book:");
+        int roomToBook = scanner.nextInt();
+        Room room = filteredRooms.get(roomToBook);
+        bookingHandler.createBooking(systemData.getCurrentStudent(), room, "Pending", room.getStartDate(),
+                room.getEndDate());
         return;
     }
 
@@ -347,11 +376,11 @@ public class StudentRentals {
 
     public static void startBookingView(SystemData systemData, BookingHandler bookingHandler, Scanner scanner) {
         System.out.println("Bookings View Page");
-        List<Booking> bookings = bookingHandler.getBookingsByEmail(systemData.getCurrentUser().getEmail());
+        List<Booking> bookings = bookingHandler.getBookingsByEmail(systemData.getCurrentStudent().getEmail());
 
         for (Booking booking : bookings) {
             System.out.println("Student " + booking.getStudent());
-            System.out.println("Property: " + booking.getProperty());
+            System.out.println("Room: " + booking.getRoom());
             System.out.println("Status: " + booking.getStatus());
             System.out.println("Start date: " + booking.getStartDate());
             System.out.println("End date: " + booking.getEndDate());

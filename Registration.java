@@ -9,41 +9,58 @@ public class Registration {
         this.systemData = systemData;
     }
 
-    public Student registerStudent(String name, String email, String passHash, String studentId,
+    public Student registerStudent(String name, String email, String passHash, String role, String studentId,
             String university) {
-        if (!isEmailUnique(email)) {
+        if (!isStudentEmailUnique(email)) {
             return null;
         }
 
-        Student newStudent = new Student(name, email, passHash, studentId, university);
+        Student newStudent = new Student(name, email, passHash, role, studentId, university);
         systemData.addStudent(newStudent);
         return newStudent;
     }
 
-    public Homeowner registerHomeowner(String name, String email, String passHash,
+    public Homeowner registerHomeowner(String name, String email, String passHash, String role,
             List<Property> properties) {
-        if (!isEmailUnique(email)) {
+        if (!isHomeownerEmailUnique(email)) {
             return null;
         }
 
-        Homeowner newOwner = new Homeowner(name, email, passHash, properties);
+        Homeowner newOwner = new Homeowner(name, email, passHash, role, properties);
         systemData.addHomeowner(newOwner);
         return newOwner;
     }
 
-    public User login(String email) {
-        Map<String, User> userEmailIndex = systemData.getUserEmailIndex();
-        User user = userEmailIndex.get(email);
-        return user;
+    public Student loginStudent(String email) {
+        Map<String, Student> studentEmailIndex = systemData.getStudentEmailIndex();
+        Student student = studentEmailIndex.get(email);
+        return student;
     }
 
-    public User getUserFromEmail(String email) {
-        Map<String, User> userEmailIndex = systemData.getUserEmailIndex();
-        User user = userEmailIndex.get(email);
-        return user;
+    public Homeowner loginHomeowner(String email) {
+        Map<String, Homeowner> homeownerEmailIndex = systemData.getHomeownerEmailIndex();
+        Homeowner homeowner = homeownerEmailIndex.get(email);
+        return homeowner;
     }
 
-    public boolean isEmailUnique(String email) {
-        return getUserFromEmail(email) == null;
+    public Student getStudentFromEmail(String email) {
+        Map<String, Student> studentEmailIndex = systemData.getStudentEmailIndex();
+        Student student = studentEmailIndex.get(email);
+        return student;
+    }
+
+    public Homeowner getHomeownerFromEmail(String email) {
+        Map<String, Homeowner> homeownerEmailIndex = systemData.getHomeownerEmailIndex();
+        Homeowner homeowner = homeownerEmailIndex.get(email);
+        return homeowner;
+
+    }
+
+    public boolean isStudentEmailUnique(String email) {
+        return getStudentFromEmail(email) == null;
+    }
+
+    public boolean isHomeownerEmailUnique(String email) {
+        return getHomeownerFromEmail(email) == null;
     }
 }

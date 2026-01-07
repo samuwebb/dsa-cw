@@ -8,9 +8,11 @@ public class SystemData {
     private List<Homeowner> homeowners = new ArrayList<>();
     private List<Property> properties = new ArrayList<>();
     private List<Booking> bookings = new ArrayList<>();
-    private User currentUser;
+    private Student currentStudent;
+    private Homeowner currentHomeowner;
 
-    private Map<String, User> userEmailIndex = new HashMap<>();
+    private Map<String, Student> studentEmailIndex = new HashMap<>();
+    private Map<String, Homeowner> homeownerEmailIndex = new HashMap<>();
     private Map<String, Property> addressRegistry = new HashMap<>();
     private Map<String, List<Property>> propertiesByCity = new HashMap<>();
     private Map<String, List<Booking>> bookingsByEmail = new HashMap<>();
@@ -31,12 +33,20 @@ public class SystemData {
         return bookings;
     }
 
-    public User getCurrentUser() {
-        return currentUser;
+    public Student getCurrentStudent() {
+        return currentStudent;
     }
 
-    public Map<String, User> getUserEmailIndex() {
-        return userEmailIndex;
+    public Homeowner getCurrentHomeowner() {
+        return currentHomeowner;
+    }
+
+    public Map<String, Student> getStudentEmailIndex() {
+        return studentEmailIndex;
+    }
+
+    public Map<String, Homeowner> getHomeownerEmailIndex() {
+        return homeownerEmailIndex;
     }
 
     public Map<String, Property> getAddressRegistry() {
@@ -53,13 +63,13 @@ public class SystemData {
 
     public void addStudent(Student newStudent) {
         students.add(newStudent);
-        userEmailIndex.put(newStudent.getEmail(), newStudent);
+        studentEmailIndex.put(newStudent.getEmail(), newStudent);
         return;
     }
 
     public void addHomeowner(Homeowner newHomeowner) {
         homeowners.add(newHomeowner);
-        userEmailIndex.put(newHomeowner.getEmail(), newHomeowner);
+        homeownerEmailIndex.put(newHomeowner.getEmail(), newHomeowner);
         return;
     }
 
@@ -78,7 +88,11 @@ public class SystemData {
         return;
     }
 
-    public void setCurrentUser(User newUser) {
-        currentUser = newUser;
+    public void setCurrentStudent(Student newStudent) {
+        currentStudent = newStudent;
+    }
+
+    public void setCurrentHomeowner(Homeowner newHomeowner) {
+        currentHomeowner = newHomeowner;
     }
 }
