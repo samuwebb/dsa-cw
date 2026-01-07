@@ -1,13 +1,13 @@
 public class Booking {
     private Student student;
-    private Property property;
+    private Room room;
     private String status;
     private String startDate;
     private String endDate;
 
-    public Booking(Student student, Property property, String status, String startDate, String endDate) {
+    public Booking(Student student, Room room, String status, String startDate, String endDate) {
         this.student = student;
-        this.property = property;
+        this.room = room;
         this.status = status;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -17,8 +17,8 @@ public class Booking {
         return student;
     }
 
-    public Property getProperty() {
-        return property;
+    public Room getRoom() {
+        return room;
     }
 
     public String getStatus() {
