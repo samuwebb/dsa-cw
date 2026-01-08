@@ -9,6 +9,11 @@ public class BookingHandler {
     }
 
     public Booking createBooking(Student student, Room room, String status, String startDate, String endDate) {
+        if (student == null) {
+            System.out.println("You are not logged in as a student.");
+            return null;
+        }
+
         Booking newBooking = new Booking(student, room, status, startDate, endDate);
         systemData.addBooking(newBooking);
         return newBooking;
