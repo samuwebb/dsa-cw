@@ -43,15 +43,25 @@ public class Registration {
         return newOwner;
     }
 
-    public Student loginStudent(String email) {
+    public Student loginStudent(String email, String password) {
         Map<String, Student> studentEmailIndex = systemData.getStudentEmailIndex();
         Student student = studentEmailIndex.get(email);
+
+        if (!isPasswordValid(password, student.getPassword())) {
+            System.out.println("Password is invalid.");
+            return null;
+        }
         return student;
     }
 
-    public Homeowner loginHomeowner(String email) {
+    public Homeowner loginHomeowner(String email, String password) {
         Map<String, Homeowner> homeownerEmailIndex = systemData.getHomeownerEmailIndex();
         Homeowner homeowner = homeownerEmailIndex.get(email);
+
+        if (!isPasswordValid(password, homeowner.getPassword())) {
+            System.out.println("Password is invalid.");
+            return null;
+        }
         return homeowner;
     }
 
@@ -81,5 +91,12 @@ public class Registration {
         Pattern pattern = Pattern.compile(EMAIL_REGEX);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public boolean isPasswordValid(String password1, String password2) {
+        if (password1.equals(password2)) {
+            return true;
+        }
+        return false;
     }
 }

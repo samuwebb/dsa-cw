@@ -134,8 +134,16 @@ public class StudentRentals {
         System.out.println("Enter your email:");
         System.out.println(">> ");
         String email = scanner.next();
+        System.out.println("Enter your password:");
+        System.out.println(">> ");
+        String password = scanner.next();
 
-        Student student = registration.loginStudent(email);
+        Student student = registration.loginStudent(email, password);
+
+        if (student == null) {
+            return;
+        }
+
         systemData.setCurrentStudent(student);
         System.out.println("Welcome " + systemData.getCurrentStudent().getName());
         return;
@@ -144,12 +152,20 @@ public class StudentRentals {
     public static void startLoginHomeowner(SystemData systemData, Registration registration, Scanner scanner) {
         System.out.println("\n\n-=-=-=-=-=-=-=-=-=-=-");
         System.out.println("Homeowner Login Page");
-        System.out.println("Enter your email:");
         System.out.println("-=-=-=-=-=-=-=-=-=-=-");
+        System.out.println("Enter your email:");
         System.out.println(">> ");
         String email = scanner.next();
+        System.out.println("Enter your password:");
+        System.out.println(">> ");
+        String password = scanner.next();
 
-        Homeowner homeowner = registration.loginHomeowner(email);
+        Homeowner homeowner = registration.loginHomeowner(email, password);
+
+        if (homeowner == null) {
+            return;
+        }
+
         systemData.setCurrentHomeowner(homeowner);
         System.out.println("Welcome " + systemData.getCurrentHomeowner().getName());
         return;
