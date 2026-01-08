@@ -442,10 +442,13 @@ public class StudentRentals {
         switch (bookingChoice) {
             case 1:
                 startBookingView(systemData, bookingHandler, scanner);
+                break;
             case 2:
                 cancelBookingView(systemData, bookingHandler, scanner);
+                break;
             case 3:
                 startBookingDashboardView(systemData, bookingHandler, scanner);
+                break;
             case 4:
                 break;
         }
