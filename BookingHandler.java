@@ -14,6 +14,14 @@ public class BookingHandler {
             return null;
         }
 
+        if (status == "Accepted") {
+            System.out.println("Room is already booked.");
+        }
+
+        if (room.getStatus() == "Occupied") {
+            System.out.println("Room is already occupied.");
+        }
+
         Booking newBooking = new Booking(student, room, status, startDate, endDate);
         systemData.addBooking(newBooking);
         return newBooking;

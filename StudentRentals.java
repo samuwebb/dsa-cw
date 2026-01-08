@@ -488,6 +488,20 @@ public class StudentRentals {
             System.out.println("Start date: " + booking.getStartDate());
             System.out.println("End date: " + booking.getEndDate());
             System.out.println("-=-=-=-=-=-=-=-=-=-=-");
+
+            if (booking.getStatus().equals("Pending")) {
+                System.out.println("Do you accept or reject this booking?");
+                System.out.println(">> ");
+                String choice = scanner.next();
+
+                if (choice.equals("accept")) {
+                    booking.setStatus("Accepted");
+                    booking.getRoom().setStatus("Occupied");
+                } else if (choice.equals("reject")) {
+                    booking.setStatus("Rejected");
+                    booking.getRoom().setStatus("Occupied");
+                }
+            }
         }
         return;
     }
