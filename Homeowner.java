@@ -12,4 +12,8 @@ public class Homeowner extends User {
     public List<Property> getProperties() {
         return properties;
     }
+
+    public void addProperty(Property property) {
+        properties.add(property);
+    }
 }

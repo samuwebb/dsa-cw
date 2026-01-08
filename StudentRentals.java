@@ -21,7 +21,7 @@ public class StudentRentals {
                     displayRegistrationMenu(systemData, registration, scanner);
                     break;
                 case 2:
-                    displayPropertyMenu(propertyHandler, scanner);
+                    displayPropertyMenu(systemData, propertyHandler, scanner);
                     break;
                 case 3:
                     displaySearchMenu(systemData, propertyHandler, bookingHandler, scanner);
@@ -165,7 +165,7 @@ public class StudentRentals {
         return;
     }
 
-    public static void displayPropertyMenu(PropertyHandler propertyHandler, Scanner scanner) {
+    public static void displayPropertyMenu(SystemData systemData, PropertyHandler propertyHandler, Scanner scanner) {
         System.out.println("\n\n-=-=-=-=-=-=-=-=-=-=-");
         System.out.println("Property Menu");
         System.out.println("-=-=-=-=-=-=-=-=-=-=-");
@@ -183,7 +183,7 @@ public class StudentRentals {
                 startPropertyView(propertyHandler, scanner);
                 break;
             case 2:
-                startPropertyListing(propertyHandler, scanner);
+                startPropertyListing(systemData, propertyHandler, scanner);
                 break;
             case 3:
                 displayPropertyUpdateMenu(propertyHandler, scanner);
@@ -243,7 +243,7 @@ public class StudentRentals {
         return;
     }
 
-    public static void startPropertyListing(PropertyHandler propertyHandler, Scanner scanner) {
+    public static void startPropertyListing(SystemData systemData, PropertyHandler propertyHandler, Scanner scanner) {
         System.out.println("\n\n-=-=-=-=-=-=-=-=-=-=-");
         System.out.println("Property Listing Page");
         System.out.println("-=-=-=-=-=-=-=-=-=-=-");
@@ -257,7 +257,7 @@ public class StudentRentals {
         System.out.println(">> ");
         String description = scanner.next();
 
-        propertyHandler.listProperty(address, city, description);
+        propertyHandler.listProperty(address, city, systemData.getCurrentHomeowner(), description);
         return;
     }
 
