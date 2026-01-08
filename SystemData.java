@@ -63,7 +63,7 @@ public class SystemData {
     }
 
     public Map<Homeowner, List<Booking>> getBookingsByOwner() {
-        return getBookingsByOwner();
+        return bookingsByOwner;
     }
 
     public void addStudent(Student newStudent) {

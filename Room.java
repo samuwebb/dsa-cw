@@ -23,6 +23,10 @@ public class Room {
         return roomType;
     }
 
+    public Property getProperty() {
+        return property;
+    }
+
     public float getMonthlyRent() {
         return monthlyRent;
     }

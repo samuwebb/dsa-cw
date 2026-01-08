@@ -460,8 +460,8 @@ public class StudentRentals {
 
         for (Booking booking : bookings) {
             System.out.println("\n-=-=-=-=-=-=-=-=-=-=-");
-            System.out.println("Student " + booking.getStudent());
-            System.out.println("Room: " + booking.getRoom());
+            System.out.println("Student " + booking.getStudent().getName());
+            System.out.println("Room: " + booking.getRoom().getRoomType());
             System.out.println("Status: " + booking.getStatus());
             System.out.println("Start date: " + booking.getStartDate());
             System.out.println("End date: " + booking.getEndDate());
