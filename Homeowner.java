@@ -6,7 +6,6 @@ public class Homeowner extends User {
 
     public Homeowner(String name, String email, String passHash, List<Property> properties) {
         super(name, email, passHash);
-        this.properties = properties;
     }
 
     public List<Property> getProperties() {
