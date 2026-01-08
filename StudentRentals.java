@@ -37,6 +37,7 @@ public class StudentRentals {
         System.out.println(systemData.getStudents());
         System.out.println(systemData.getHomeowners());
         System.out.println(systemData.getProperties());
+        System.out.println(systemData.getBookings());
     }
 
     public static void displayMainMenu() {
@@ -420,7 +421,7 @@ public class StudentRentals {
         System.out.println("Please select a room from above to book:");
         System.out.println(">> ");
         int roomToBook = scanner.nextInt();
-        Room room = filteredRooms.get(roomToBook);
+        Room room = filteredRooms.get(roomToBook - 1);
         bookingHandler.createBooking(systemData.getCurrentStudent(), room, "Pending", room.getStartDate(),
                 room.getEndDate());
         return;
