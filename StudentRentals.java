@@ -96,7 +96,7 @@ public class StudentRentals {
             return;
         }
 
-        registration.registerStudent(name, email, password, "Student", studentId, university);
+        registration.registerStudent(name, email, password, studentId, university);
         return;
     }
 
@@ -114,7 +114,7 @@ public class StudentRentals {
             return;
         }
 
-        registration.registerHomeowner(name, email, password, "Homeowner", null);
+        registration.registerHomeowner(name, email, password, null);
         return;
     }
 

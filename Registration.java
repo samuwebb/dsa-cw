@@ -9,24 +9,24 @@ public class Registration {
         this.systemData = systemData;
     }
 
-    public Student registerStudent(String name, String email, String passHash, String role, String studentId,
+    public Student registerStudent(String name, String email, String passHash, String studentId,
             String university) {
         if (!isStudentEmailUnique(email)) {
             return null;
         }
 
-        Student newStudent = new Student(name, email, passHash, role, studentId, university);
+        Student newStudent = new Student(name, email, passHash, studentId, university);
         systemData.addStudent(newStudent);
         return newStudent;
     }
 
-    public Homeowner registerHomeowner(String name, String email, String passHash, String role,
+    public Homeowner registerHomeowner(String name, String email, String passHash,
             List<Property> properties) {
         if (!isHomeownerEmailUnique(email)) {
             return null;
         }
 
-        Homeowner newOwner = new Homeowner(name, email, passHash, role, properties);
+        Homeowner newOwner = new Homeowner(name, email, passHash, properties);
         systemData.addHomeowner(newOwner);
         return newOwner;
     }
