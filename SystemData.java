@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
+// Responsible for housing data for solution
 public class SystemData {
     private List<Student> students = new ArrayList<>();
     private List<Homeowner> homeowners = new ArrayList<>();
@@ -11,6 +12,7 @@ public class SystemData {
     private Student currentStudent;
     private Homeowner currentHomeowner;
 
+    // Hash maps used for quick retrieval
     private Map<String, Student> studentEmailIndex = new HashMap<>();
     private Map<String, Homeowner> homeownerEmailIndex = new HashMap<>();
     private Map<String, Property> addressRegistry = new HashMap<>();
@@ -78,6 +80,7 @@ public class SystemData {
         return;
     }
 
+    // Add property to address registry and propertiesByCity hash maps
     public void addProperty(Property newProperty) {
         properties.add(newProperty);
         addressRegistry.put(newProperty.getAddress(), newProperty);
@@ -86,6 +89,7 @@ public class SystemData {
         return;
     }
 
+    // Add booking to bookings and bookingsByEmail and bookingsByOwner hash maps
     public void addBooking(Booking newBooking) {
         bookings.add(newBooking);
         bookingsByEmail.putIfAbsent(newBooking.getStudent().getEmail(), new ArrayList<>());

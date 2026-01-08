@@ -1,3 +1,5 @@
+// Redundant class not used in final solution but remains to show intent
+
 public class Review {
     private Property property;
     private int rating;

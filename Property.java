@@ -7,7 +7,7 @@ public class Property {
     private String city;
     private String description;
     private float averageRating;
-    private List<Room> rooms = new ArrayList<>();
+    private List<Room> rooms = new ArrayList<>(); // Create empty array to populate rooms
 
     public Property(Homeowner owner, String address, String city, String description) {
         this.owner = owner;
@@ -40,6 +40,7 @@ public class Property {
         return rooms;
     }
 
+    // Check if the property contains no rooms
     public boolean isEmpty() {
         return rooms.isEmpty();
     }

@@ -3,7 +3,7 @@ public class Student extends User {
     private String university;
 
     public Student(String name, String email, String passHash, String studentId, String university) {
-        super(name, email, passHash);
+        super(name, email, passHash); // Inheriting the user attributes
         this.studentId = studentId;
         this.university = university;
     }
