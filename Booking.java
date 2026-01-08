@@ -32,4 +32,8 @@ public class Booking {
     public String getEndDate() {
         return endDate;
     }
+
+    public void setStatus(String newStatus) {
+        status = newStatus;
+    }
 }
