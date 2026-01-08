@@ -2,16 +2,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Property {
+    private Homeowner owner;
     private String address;
     private String city;
     private String description;
     private float averageRating;
     private List<Room> rooms = new ArrayList<>();
 
-    public Property(String address, String city, String description) {
+    public Property(Homeowner owner, String address, String city, String description) {
+        this.owner = owner;
         this.address = address;
         this.city = city;
         this.description = description;
+    }
+
+    public Homeowner getOwner() {
+        return owner;
     }
 
     public String getAddress() {

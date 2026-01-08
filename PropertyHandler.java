@@ -10,7 +10,7 @@ public class PropertyHandler {
     }
 
     public Property listProperty(String address, String city, Homeowner homeowner, String description) {
-        Property newProperty = new Property(address, city, description);
+        Property newProperty = new Property(systemData.getCurrentHomeowner(), address, city, description);
         homeowner.addProperty(newProperty);
         systemData.addProperty(newProperty);
         return newProperty;

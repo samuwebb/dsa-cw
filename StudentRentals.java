@@ -433,8 +433,9 @@ public class StudentRentals {
         System.out.println("-=-=-=-=-=-=-=-=-=-=-");
         System.out.println("Please select one of the following:");
         System.out.println("1. View bookings");
-        System.out.println("2. Delete a booking");
-        System.out.println("3. Exit");
+        System.out.println("2. Cancel a booking");
+        System.out.println("3. Booking dashboard (homeowners)");
+        System.out.println("4. Exit");
         System.out.println(">> ");
         int bookingChoice = scanner.nextInt();
 
@@ -442,8 +443,10 @@ public class StudentRentals {
             case 1:
                 startBookingView(systemData, bookingHandler, scanner);
             case 2:
-                break;
+                cancelBookingView(systemData, bookingHandler, scanner);
             case 3:
+                startBookingDashboardView(systemData, bookingHandler, scanner);
+            case 4:
                 break;
         }
         return;
@@ -454,6 +457,28 @@ public class StudentRentals {
         System.out.println("Bookings View Page");
         System.out.println("-=-=-=-=-=-=-=-=-=-=-");
         List<Booking> bookings = bookingHandler.getBookingsByEmail(systemData.getCurrentStudent().getEmail());
+
+        for (Booking booking : bookings) {
+            System.out.println("\n-=-=-=-=-=-=-=-=-=-=-");
+            System.out.println("Student " + booking.getStudent());
+            System.out.println("Room: " + booking.getRoom());
+            System.out.println("Status: " + booking.getStatus());
+            System.out.println("Start date: " + booking.getStartDate());
+            System.out.println("End date: " + booking.getEndDate());
+            System.out.println("-=-=-=-=-=-=-=-=-=-=-");
+        }
+        return;
+    }
+
+    public static void cancelBookingView(SystemData systemData, BookingHandler bookingHandler, Scanner scanner) {
+    }
+
+    public static void startBookingDashboardView(SystemData systemData, BookingHandler bookingHandler,
+            Scanner scanner) {
+        System.out.println("\n\n-=-=-=-=-=-=-=-=-=-=-");
+        System.out.println("Booking Dashboard Page");
+        Homeowner homeowner = systemData.getCurrentHomeowner();
+        List<Booking> bookings = bookingHandler.getBookingsByOwner(homeowner);
 
         for (Booking booking : bookings) {
             System.out.println("\n-=-=-=-=-=-=-=-=-=-=-");

@@ -24,4 +24,10 @@ public class BookingHandler {
         List<Booking> bookings = bookingsByEmail.get(email);
         return bookings;
     }
+
+    public List<Booking> getBookingsByOwner(Homeowner owner) {
+        Map<Homeowner, List<Booking>> bookingsByOwner = systemData.getBookingsByOwner();
+        List<Booking> bookings = bookingsByOwner.get(owner);
+        return bookings;
+    }
 }
