@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Registration {
     SystemData systemData;
@@ -12,6 +14,12 @@ public class Registration {
     public Student registerStudent(String name, String email, String passHash, String studentId,
             String university) {
         if (!isStudentEmailUnique(email)) {
+            System.out.println("Email already exists.");
+            return null;
+        }
+
+        if (!isValidEmail(email)) {
+            System.out.println("Email is not valid.");
             return null;
         }
 
@@ -23,6 +31,10 @@ public class Registration {
     public Homeowner registerHomeowner(String name, String email, String passHash,
             List<Property> properties) {
         if (!isHomeownerEmailUnique(email)) {
+            return null;
+        }
+
+        if (!isValidEmail(email)) {
             return null;
         }
 
@@ -62,5 +74,12 @@ public class Registration {
 
     public boolean isHomeownerEmailUnique(String email) {
         return getHomeownerFromEmail(email) == null;
+    }
+
+    public boolean isValidEmail(String email) {
+        final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }
